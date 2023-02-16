@@ -2,8 +2,9 @@ document.getElementById('calculate').addEventListener('click', function () {
     const incomeFieldValue = findValueById('income-field');
 
     if (isNaN(incomeFieldValue)) {
-        alert('Please input a number');
+        alert('Please input all the numbers');
         document.getElementById('income-field').value = '';
+        removeValue();
     }
     else {
         const foodFieldValue = findValueById('food-field');
@@ -13,12 +14,12 @@ document.getElementById('calculate').addEventListener('click', function () {
         const clothsFieldValue = findValueById('cloths-field');
 
         const totalExpenseValue = findInnerTextValueById('total-expense');
-        const totalExpense = foodFieldValue + rentFieldValue + clothsFieldValue;
-        // document.getElementById('total-expense').innerText = totalExpense;
-
+        if(foodFieldValue > 0 && rentFieldValue > 0 && clothsFieldValue > 0){
+            const totalExpense = foodFieldValue + rentFieldValue + clothsFieldValue;
+    
         const balanceValue = findInnerTextValueById('balance');
         const newBalance = incomeFieldValue - totalExpense;
-        // document.getElementById('balance').innerText = newBalance;
+
 
         if (incomeFieldValue > totalExpense) {
             document.getElementById('total-expense').innerText = totalExpense;
@@ -27,6 +28,12 @@ document.getElementById('calculate').addEventListener('click', function () {
 
         else {
             alert('You have not enough balance');
+            removeValue();
+        }
+        }
+
+        else{
+            alert('Input cannot be a negative number');
             removeValue();
         }
     }
