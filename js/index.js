@@ -7,14 +7,17 @@ document.getElementById('calculate').addEventListener('click', function () {
         removeValue();
     }
     else {
-        const foodFieldValue = findValueById('food-field');
+        document.getElementById("food-field").defaultValue = "0";
+        let foodFieldValue = findValueById('food-field');
 
-        const rentFieldValue = findValueById('rent-field');
+        document.getElementById("rent-field").defaultValue = "0";
+        let rentFieldValue = findValueById('rent-field');
 
-        const clothsFieldValue = findValueById('cloths-field');
+        document.getElementById("cloths-field").defaultValue = "0";
+        let clothsFieldValue = findValueById('cloths-field');
 
         const totalExpenseValue = findInnerTextValueById('total-expense');
-        if(foodFieldValue > 0 && rentFieldValue > 0 && clothsFieldValue > 0){
+        if(foodFieldValue >= 0 && rentFieldValue >= 0 && clothsFieldValue >= 0){
             const totalExpense = foodFieldValue + rentFieldValue + clothsFieldValue;
     
         const balanceValue = findInnerTextValueById('balance');
@@ -33,8 +36,8 @@ document.getElementById('calculate').addEventListener('click', function () {
         }
 
         else{
-            alert('Input cannot be a negative number');
-            removeValue();
+            alert('There is no value');
+            
         }
     }
 })
@@ -45,7 +48,6 @@ document.getElementById('save').addEventListener('click', function () {
         const savings = incomeFieldValue * 0.2;
         console.log(savings)
 
-        // const savingAmountValue = findInnerTextValueById('saving-amount');
         document.getElementById('saving-amount').innerText = savings;
 
         const balanceValue = findInnerTextValueById('balance');
